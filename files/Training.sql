@@ -29,7 +29,7 @@ SELECT * FROM T_Users;
 
 CREATE TABLE T_Customers (
 	IdCustomer				int(4)		PRIMARY KEY AUTO_INCREMENT,
-	Name					varchar(30)	NOT NULL,
+	LastName				varchar(30)	NOT NULL,
 	FirstName				varchar(30)	NOT NULL,
 	Email 					varchar(30)	NOT NULL unique,
 	Phone 					varchar(20)	,
