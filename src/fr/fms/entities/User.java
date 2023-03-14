@@ -28,9 +28,21 @@ public class User {
 		this.admin = admin;
 	}
 
+	public User(String login, String passWord, boolean admin) {
+		this.login = login;
+		this.passWord = passWord;
+		this.admin = admin;
+	}
+
 	@Override
 	public String toString() {
-		return "User [login=" + login + "]";
+		String adminTraining;
+		if (admin == true) {
+			adminTraining = "Admin";
+		} else {
+			adminTraining = "Client";
+		}
+		return "User [login=" + login + ", status=" + adminTraining + "]";
 	}
 
 	public int getId() {

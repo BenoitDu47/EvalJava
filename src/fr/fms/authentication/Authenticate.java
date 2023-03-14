@@ -12,11 +12,11 @@ public class Authenticate {
 	private Dao<User> userDao = DaoFactory.getUserDao();
 
 	/**
-	 * méthode qui vérifie si login et pwd correspond à un utilisateur en base
+	 * Checks if a user with the given credentials exists in the database.
 	 * 
-	 * @param log
-	 * @param pwd
-	 * @return id de l'utilisateur, 0 si non trouvé
+	 * @param log the user's login
+	 * @param pwd the user's password
+	 * @return the user's ID if they exist, otherwise 0
 	 */
 	public int existUser(String log, String pwd) {
 		User user = ((UserDao) userDao).findUserByCredentials(log, pwd);
@@ -26,10 +26,10 @@ public class Authenticate {
 	}
 
 	/**
-	 * méthode qui vérifie si login correspond à un utilisateur en base
+	 * Checks if a user with the given login exists in the database.
 	 * 
-	 * @param log
-	 * @return id de l'utilisateur, 0 si non trouvé
+	 * @param log the user's login
+	 * @return the user's ID if they exist, otherwise 0
 	 */
 	public int existUser(String log) {
 		User user = ((UserDao) userDao).findUserByLogin(log);
@@ -39,19 +39,31 @@ public class Authenticate {
 	}
 
 	/**
-	 * méthode qui renvoi un client correspondant à un email (unique en base)
+	 * Finds a customer in the database using their email.
 	 * 
-	 * @param email
-	 * @return client
+	 * @param email the customer's email
+	 * @return the Customer object if they exist, otherwise null
 	 */
 	public Customer existCustomerByEmail(String email) {
 		return ((CustomerDao) customerDao).findCustomerByEmail(email);
 	}
 
+	/**
+	 * Adds a new user to the database with the given email and password.
+	 * 
+	 * @param email    the user's email
+	 * @param password the user's password
+	 */
 	public void addUser(String email, String password) {
 		userDao.create(new User(0, email, password, false));
 	}
 
+	/**
+	 * Adds a new customer to the database.
+	 * 
+	 * @param customer the Customer object to be added
+	 * @return true if the customer was successfully added, otherwise false
+	 */
 	public boolean addCustomer(Customer customer) {
 		return customerDao.create(customer);
 	}

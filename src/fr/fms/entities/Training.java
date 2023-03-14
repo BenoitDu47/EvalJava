@@ -47,8 +47,15 @@ public class Training {
 
 	@Override
 	public String toString() {
-		return centerString(String.valueOf(idTraining)) + centerString(description) + centerString(description)
-				+ centerString(String.valueOf(price));
+		String distentialTraining;
+		if (distential == true) {
+			distentialTraining = "Formation en présentielle";
+		} else {
+			distentialTraining = "Formation en distanciel";
+		}
+		return centerString(String.valueOf("Formation: " + trainingName))
+				+ centerString(String.valueOf(duration) + " semaines") + centerString(String.valueOf(price) + "€")
+				+ centerString(distentialTraining);
 	}
 
 	public static String centerString(String str) {

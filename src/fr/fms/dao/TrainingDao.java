@@ -87,4 +87,28 @@ public class TrainingDao implements Dao<Training> {
 		}
 		return trainings;
 	}
+
+	public ArrayList<Training> readAllByCat(int id) {
+		ArrayList<Training> trainings = new ArrayList<Training>();
+		String strSql = "SELECT * FROM T_Trainings where idCategory=" + id;
+		try (Statement statement = connection.createStatement()) {
+			try (ResultSet resultSet = statement.executeQuery(strSql)) {
+				while (resultSet.next()) {
+					int rsId = resultSet.getInt(1);
+					String rsDescription = resultSet.getString(2);
+					String rsBrand = resultSet.getString(3);
+					double rsPrice = resultSet.getDouble(4);
+					int rsCategory = resultSet.getInt(5);
+					int rsDuration = resultSet.getInt(6);
+					boolean rsDistential = resultSet.getBoolean(7);
+					int rsQuantity = resultSet.getInt(8);
+					trainings.add((new Training(rsId, rsDescription, rsBrand, rsPrice, rsCategory, rsDuration,
+							rsDistential, rsQuantity)));
+				}
+			}
+		} catch (SQLException e) {
+			logger.severe("pb sql sur l'affichage des formations par catégories " + e.getMessage());
+		}
+		return trainings;
+	}
 }

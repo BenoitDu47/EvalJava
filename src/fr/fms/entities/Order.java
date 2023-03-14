@@ -31,6 +31,12 @@ public class Order {
 		this.idCustomer = idCustomer;
 	}
 
+	public Order(double amount, Date date, int idCustomer) {
+		this.amount = amount;
+		this.date = date;
+		this.idCustomer = idCustomer;
+	}
+
 	@Override
 	public String toString() {
 		return "Order [idOrder=" + idOrder + ", amount=" + amount + ", date=" + date + ", idCustomer=" + idCustomer
