@@ -20,8 +20,9 @@ public class User {
 	 * @param passWord The passWord user
 	 * @param admin    The admin or not
 	 */
-	public User(String login, String passWord, boolean admin) {
+	public User(int id, String login, String passWord, boolean admin) {
 		super();
+		this.id = id;
 		this.login = login;
 		this.passWord = passWord;
 		this.admin = admin;
