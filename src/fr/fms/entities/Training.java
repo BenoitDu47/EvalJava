@@ -17,7 +17,7 @@ public class Training {
 	private boolean distential;
 	private int quantity = 1;
 
-	public static final int MAX_STRING_LENGTH = 20;
+	public static final int MAX_STRING_LENGTH = 25;
 
 	/**
 	 * Constructs a new training with the specified information.
@@ -30,7 +30,6 @@ public class Training {
 	 * @param duration     the duration of the training item
 	 * @param distential   the availability for distance training of the training
 	 *                     item
-	 * @param quantity     the quantity of the training item
 	 */
 	public Training(int idTraining, String trainingName, String description, double price, int category, int duration,
 			boolean distential, int quantity) {
@@ -42,20 +41,18 @@ public class Training {
 		this.category = category;
 		this.duration = duration;
 		this.distential = distential;
-		this.quantity = quantity;
 	}
 
 	@Override
 	public String toString() {
 		String distentialTraining;
 		if (distential == true) {
-			distentialTraining = "Formation en présentielle";
+			distentialTraining = "Présentiel";
 		} else {
-			distentialTraining = "Formation en distanciel";
+			distentialTraining = "Distanciel";
 		}
-		return centerString(String.valueOf("Formation: " + trainingName))
-				+ centerString(String.valueOf(duration) + " semaines") + centerString(String.valueOf(price) + "€")
-				+ centerString(distentialTraining);
+		return centerString(String.valueOf(idTraining)) + centerString(String.valueOf(trainingName))
+				+ centerString(String.valueOf(duration)) + centerString(String.valueOf(price) + "€");
 	}
 
 	public static String centerString(String str) {

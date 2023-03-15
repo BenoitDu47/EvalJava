@@ -28,7 +28,7 @@ public class Category {
 
 	@Override
 	public String toString() {
-		return centerString(String.valueOf(idCategory)) + centerString(name) + centerString(description);
+		return centerString(String.valueOf(idCategory)) + centerString(name);
 	}
 
 	/**

@@ -7,6 +7,7 @@ import java.sql.Statement;
 import java.util.ArrayList;
 
 import fr.fms.entities.Customer;
+import fr.fms.entities.Training;
 
 public class CustomerDao implements Dao<Customer> {
 
@@ -103,6 +104,12 @@ public class CustomerDao implements Dao<Customer> {
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
+		return null;
+	}
+
+	@Override
+	public Training readbyString(String weyword) {
+		// TODO Auto-generated method stub
 		return null;
 	}
 

@@ -88,6 +88,16 @@ public class IBusinessImpl implements IBusiness {
 		return ((TrainingDao) trainingDao).readAllByCat(id);
 	}
 
+	@Override
+	public ArrayList<Training> findTrainingByKeyword(String weyword) {
+		return ((TrainingDao) trainingDao).searchByKeyword(weyword);
+	}
+
+	@Override
+	public ArrayList<Training> findTrainingByDistential(Boolean distential) {
+		return ((TrainingDao) trainingDao).searchByDistential(distential);
+	}
+
 	public double getTotal() {
 		double[] total = { 0 };
 		cart.values().forEach((a) -> total[0] += a.getPrice() * a.getQuantity());
@@ -105,4 +115,9 @@ public class IBusinessImpl implements IBusiness {
 	public Category readOneCategory(int id) {
 		return categoryDao.read(id);
 	}
+
+	public Training readTraining(String weyword) {
+		return trainingDao.readbyString(weyword);
+	}
+
 }

@@ -6,6 +6,7 @@ import java.sql.Statement;
 import java.util.ArrayList;
 
 import fr.fms.entities.Category;
+import fr.fms.entities.Training;
 
 public class CategoryDao implements Dao<Category> {
 
@@ -55,6 +56,12 @@ public class CategoryDao implements Dao<Category> {
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
+		return null;
+	}
+
+	@Override
+	public Training readbyString(String weyword) {
+		// TODO Auto-generated method stub
 		return null;
 	}
 

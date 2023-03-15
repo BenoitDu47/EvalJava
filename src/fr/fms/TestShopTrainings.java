@@ -32,6 +32,7 @@ public class TestShopTrainings extends Thread {
 		testUserTraining(); // Davy Jones
 		// new UserDao().create(new User("toto", "123", false));
 		// testDaoFactory();
+
 	}
 
 	private static void testThreads() {

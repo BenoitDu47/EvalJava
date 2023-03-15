@@ -39,10 +39,28 @@ public class Customer {
 		this.idUser = idUser;
 	}
 
+	public Customer(String lastName, String firstName, String email, String phone, String address, int idUser) {
+		super();
+		this.lastName = lastName;
+		this.firstName = firstName;
+		this.email = email;
+		this.phone = phone;
+		this.address = address;
+		this.idUser = idUser;
+	}
+
+	public Customer(String lastName, String firstName, String email, String phone, String address) {
+		this.lastName = lastName;
+		this.firstName = firstName;
+		this.email = email;
+		this.phone = phone;
+		this.address = address;
+	}
+
 	@Override
 	public String toString() {
-		return "Customer [idCustomer=" + idCustomer + ", lastName=" + lastName + ", firstName=" + firstName + ", email="
-				+ email + ", phone=" + phone + ", address=" + address + ", idUser=" + idUser + "]";
+		return "\n Nom = " + lastName + ", Prénom = " + firstName + "\n Email = " + email + ", Téléphone = " + phone
+				+ "\n Address = " + address;
 	}
 
 	public int getIdCustomer() {

@@ -38,6 +38,10 @@ CREATE TABLE T_Customers (
 	FOREIGN KEY (idUser)	REFERENCES T_Users(idUser)
 ) ENGINE = InnoDB;
 
+INSERT INTO T_Customers (IdCustomer, LastName, FirstName, Email, Phone, Address, IdUser) VALUES ( 1, 'Davy' ,	'Jones' , 'davy.jones@pirate.com', '0697325483', 'Black pearl' ,5);
+
+SELECT * FROM T_Customers;
+
 -- -----------------------------------------------------------------------------
 -- - Construction de la table des categories de formations				  	 ---
 -- -----------------------------------------------------------------------------
@@ -74,16 +78,16 @@ CREATE TABLE T_Trainings (
 ) ENGINE = InnoDB;
 
 INSERT INTO T_Trainings (TrainingName, Description, UnitaryPrice, Quantity, Duration, Distential, IdCategory ) VALUES ( 'Java debutant', 'Formation axee sur les bases de la programmation en Java, y compris la syntaxe, la POO et la gestion de fichiers.', 2500, 5, 2, true, 2 );
-INSERT INTO T_Trainings (TrainingName, Description, UnitaryPrice, Quantity, Duration, Distential, IdCategory ) VALUES ( 'Applications de bureau Java', 'Formation axee sur la creation d applications de bureau en utilisant Java et le framework Swing pour creer des interfaces utilisateur graphiques.', 2800, 10, 2, true, 2 );
-INSERT INTO T_Trainings (TrainingName, Description, UnitaryPrice, Quantity, Duration, Distential, IdCategory ) VALUES ( 'Applications mobiles Android Java', 'Formation axee sur le developpement d applications mobiles Android en utilisant Java et l Android SDK, avec des competences en creation d interfaces utilisateur et en integration de fonctionnalites telles que la geolocalisation.', 4000, 2, 3, false, 2 );
-INSERT INTO T_Trainings (TrainingName, Description, UnitaryPrice, Quantity, Duration, Distential, IdCategory ) VALUES ( 'Applications web Java', 'Formation axee sur le developpement d applications web en utilisant Java, y compris la creation de servlets, la gestion des sessions utilisateur et l integration de bases de donnees en utilisant JDBC.', 3200, 15, 2, false, 2 );
+INSERT INTO T_Trainings (TrainingName, Description, UnitaryPrice, Quantity, Duration, Distential, IdCategory ) VALUES ( 'App de bureau Java', 'Formation axee sur la creation d applications de bureau en utilisant Java et le framework Swing pour creer des interfaces utilisateur graphiques.', 2800, 10, 2, true, 2 );
+INSERT INTO T_Trainings (TrainingName, Description, UnitaryPrice, Quantity, Duration, Distential, IdCategory ) VALUES ( 'App mobiles Android Java', 'Formation axee sur le developpement d applications mobiles Android en utilisant Java et l Android SDK, avec des competences en creation d interfaces utilisateur et en integration de fonctionnalites telles que la geolocalisation.', 4000, 2, 3, false, 2 );
+INSERT INTO T_Trainings (TrainingName, Description, UnitaryPrice, Quantity, Duration, Distential, IdCategory ) VALUES ( 'App web Java', 'Formation axee sur le developpement d applications web en utilisant Java, y compris la creation de servlets, la gestion des sessions utilisateur et l integration de bases de donnees en utilisant JDBC.', 3200, 15, 2, false, 2 );
 INSERT INTO T_Trainings (TrainingName, Description, UnitaryPrice, Quantity, Duration, Distential, IdCategory ) VALUES ( 'HTML, CSS et JavaScript', 'Formation axee sur les competences de base pour la creation de pages web, y compris la structure HTML, la mise en forme CSS et l interaction utilisateur JavaScript.', 7800, 30, 4, true, 1 );
 INSERT INTO T_Trainings (TrainingName, Description, UnitaryPrice, Quantity, Duration, Distential, IdCategory ) VALUES ( 'React', 'Formation axee sur la creation d interfaces utilisateur avec la bibliotheque React, y compris la creation de composants, la gestion de l etat et la connexion a une API pour recuperer des donnees.', 6000, 13, 4, false, 1 );
 INSERT INTO T_Trainings (TrainingName, Description, UnitaryPrice, Quantity, Duration, Distential, IdCategory ) VALUES ( 'Linux', 'Formation axee sur les competences de base pour l administration de systemes Linux, y compris la gestion des utilisateurs, la configuration reseau et la securite.', 5000, 9, 3, false, 3 );
 INSERT INTO T_Trainings (TrainingName, Description, UnitaryPrice, Quantity, Duration, Distential, IdCategory ) VALUES ( 'Bases de donnees', 'Formation axee sur l administration de systemes Windows Server, y compris la gestion des utilisateurs, la configuration du reseau et la securite.', 4700, 8, 3, true, 3 );
 INSERT INTO T_Trainings (TrainingName, Description, UnitaryPrice, Quantity, Duration, Distential, IdCategory ) VALUES ( 'Windows Server', 'Formation axee sur l administration de bases de donnees, y compris la creation de tables, la gestion des utilisateurs et la maintenance de la base de donnees.', 4000, 7, 3, true, 3 );
-INSERT INTO T_Trainings (TrainingName, Description, UnitaryPrice, Quantity, Duration, Distential, IdCategory ) VALUES ( 'Securite des reseaux informatiques', 'Formation axee sur la securite des reseaux informatiques, y compris la configuration des pare-feux, la detection des intrusions et la mise en place de politiques de securite.', 12000, 20, 5, true, 4 );
-INSERT INTO T_Trainings (TrainingName, Description, UnitaryPrice, Quantity, Duration, Distential, IdCategory ) VALUES ( 'Securite des applications web', 'Formation axee sur la securite des applications web, y compris la detection des vulnerabilites, la protection contre les attaques par injection et la mise en place de politiques de securite pour les applications web.', 11000, 6, 5, false, 4 );
+INSERT INTO T_Trainings (TrainingName, Description, UnitaryPrice, Quantity, Duration, Distential, IdCategory ) VALUES ( 'S. des reseaux informatiques', 'Formation axee sur la securite des reseaux informatiques, y compris la configuration des pare-feux, la detection des intrusions et la mise en place de politiques de securite.', 12000, 20, 5, true, 4 );
+INSERT INTO T_Trainings (TrainingName, Description, UnitaryPrice, Quantity, Duration, Distential, IdCategory ) VALUES ( 'S. des applications web', 'Formation axee sur la securite des applications web, y compris la detection des vulnerabilites, la protection contre les attaques par injection et la mise en place de politiques de securite pour les applications web.', 11000, 6, 5, false, 4 );
 
 SELECT * FROM T_Trainings;
 

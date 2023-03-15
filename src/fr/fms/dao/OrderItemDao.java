@@ -5,12 +5,13 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 import fr.fms.entities.OrderItem;
+import fr.fms.entities.Training;
 
 public class OrderItemDao implements Dao<OrderItem> {
 
 	@Override
 	public boolean create(OrderItem obj) {
-		String str = "INSERT INTO T_Order_Items (IdArticle, Quantity, UnitaryPrice, IdOrder) VALUES (?,?,?,?);";
+		String str = "INSERT INTO T_Order_Items (IdTraining, Quantity, UnitaryPrice, IdOrder) VALUES (?,?,?,?);";
 		try (PreparedStatement ps = connection.prepareStatement(str)) {
 			ps.setInt(1, obj.getIdTraining());
 			ps.setInt(2, obj.getQuantity());
@@ -45,6 +46,12 @@ public class OrderItemDao implements Dao<OrderItem> {
 
 	@Override
 	public ArrayList<OrderItem> readAll() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Training readbyString(String weyword) {
 		// TODO Auto-generated method stub
 		return null;
 	}

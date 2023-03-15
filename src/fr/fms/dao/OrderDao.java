@@ -7,6 +7,7 @@ import java.sql.Statement;
 import java.util.ArrayList;
 
 import fr.fms.entities.Order;
+import fr.fms.entities.Training;
 
 public class OrderDao implements Dao<Order> {
 
@@ -49,6 +50,12 @@ public class OrderDao implements Dao<Order> {
 
 	@Override
 	public ArrayList<Order> readAll() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Training readbyString(String weyword) {
 		// TODO Auto-generated method stub
 		return null;
 	}

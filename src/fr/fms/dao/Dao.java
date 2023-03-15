@@ -4,6 +4,8 @@ import java.sql.Connection;
 import java.util.ArrayList;
 import java.util.logging.Logger;
 
+import fr.fms.entities.Training;
+
 /**
  * The Dao interface provides methods to perform CRUD (Create, Read, Update,
  * Delete) operations on a database.
@@ -63,4 +65,6 @@ public interface Dao<T> {
 	 * @return an ArrayList of objects representing the retrieved records.
 	 */
 	public ArrayList<T> readAll();
+
+	public Training readbyString(String weyword);
 }

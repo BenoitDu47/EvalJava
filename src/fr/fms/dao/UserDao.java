@@ -6,6 +6,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 
+import fr.fms.entities.Training;
 import fr.fms.entities.User;
 
 public class UserDao implements Dao<User> {
@@ -116,6 +117,12 @@ public class UserDao implements Dao<User> {
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
+		return null;
+	}
+
+	@Override
+	public Training readbyString(String weyword) {
+		// TODO Auto-generated method stub
 		return null;
 	}
 

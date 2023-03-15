@@ -77,4 +77,8 @@ public interface IBusiness {
 	 *         category ID
 	 */
 	public ArrayList<Training> readTrainingsByCatId(int idCat);
+
+	public ArrayList<Training> findTrainingByKeyword(String weyword);
+
+	public ArrayList<Training> findTrainingByDistential(Boolean distential);
 }
