@@ -14,12 +14,16 @@ public class ShopTrainingsApp {
 	private static IBusinessImpl business = new IBusinessImpl();
 	private static Authenticate authenticate = new Authenticate();
 	public static final String TEXT_BLUE = "\u001B[36m";
+	public static final String TEXT_MAGENTA = "\u001B[35m";
+	public static final String TEXT_GREEN = "\u001B[32m";
 	public static final String TEXT_RESET = "\u001B[0m";
+	public static final String TEXT_CYAN = "\u001B[36m";
+	public static final String TEXT_RED = "\u001B[31m";
 	private static final String COLUMN_ID = "IDENTIFIANT";
 	private static final String COLUMN_DESCRIPTION = "FORMATION";
 	private static final String COLUMN_DISTENTIAL = "PRÉSENT";
 	private static final String COLUMN_PRICE = "PRIX";
-	private static final String COLUMN_DURATION = "NOMBRE DE SEMAINES";
+	private static final String COLUMN_DURATION = "JOURS";
 	private static final String COLUMN_NAME = "NAME";
 	final static int LONGUEUR_LIGNE = 60;
 
@@ -27,7 +31,9 @@ public class ShopTrainingsApp {
 	private static String login = null;
 
 	public static void main(String[] args) {
-		System.out.println("Bonjour et bienvenu dans ma boutique, voici la liste de formation en stock\n");
+		System.out.println(TEXT_MAGENTA + "Bonjour et bienvenu dans ma boutique, voici la liste de formation en stock\n"
+				+ TEXT_RESET);
+
 		displayTrainings();
 		int choice = 0;
 		while (choice != 10) {
@@ -44,7 +50,7 @@ public class ShopTrainingsApp {
 				displayCart(true);
 				break;
 			case 4:
-				displayTrainings();
+				displayTraining();
 				break;
 			case 5:
 				displayCategories();
@@ -77,11 +83,11 @@ public class ShopTrainingsApp {
 		System.out.println("1 : Ajouter une formation au panier");
 		System.out.println("2 : Retirer une formation du panier");
 		System.out.println("3 : Afficher mon panier + total pour passer commande");
-		System.out.println("4 : Afficher tous les formations en stock");
-		System.out.println("5 : Afficher toutes les catégories en base");
+		System.out.println("4 : Afficher tous les formations en stock + Description");
+		System.out.println("5 : Afficher toutes les catégories en base + Description");
 		System.out.println("6 : Afficher les formation par mot-clef");
 		System.out.println("7 : Afficher les formation en présentielles ou à distance");
-		System.out.println("8 : Afficher tous les articles d'une catégorie");
+		System.out.println("8 : Afficher tous les Formations d'une catégorie");
 		System.out.println("9 : Connexion(Deconnexion) à votre compte");
 		System.out.println("10: sortir de l'application");
 	}
@@ -95,8 +101,10 @@ public class ShopTrainingsApp {
 	}
 
 	public static void displayTrainings() {
-		System.out.println(Training.centerString(COLUMN_ID) + Training.centerString(COLUMN_DESCRIPTION)
-				+ Training.centerString(COLUMN_DURATION) + Training.centerString(COLUMN_PRICE));
+		System.out.println(TEXT_RED + Training.centerString(COLUMN_ID) + TEXT_MAGENTA
+				+ Training.centerString(COLUMN_DESCRIPTION) + TEXT_CYAN + Training.centerString(COLUMN_DURATION)
+				+ TEXT_MAGENTA + Training.centerString(COLUMN_DISTENTIAL) + TEXT_RED
+				+ Training.centerString(COLUMN_PRICE) + TEXT_RESET);
 		business.readTrainings().forEach(System.out::println);
 	}
 
@@ -118,14 +126,14 @@ public class ShopTrainingsApp {
 		else {
 			System.out.println("CONTENU DU PANIER :");
 			String titles = Training.centerString(COLUMN_ID) + Training.centerString(COLUMN_DESCRIPTION)
-					+ Training.centerString(COLUMN_DURATION) + Training.centerString(COLUMN_PRICE)
-					+ Training.centerString("QUANTITE");
+					+ Training.centerString(COLUMN_DURATION) + Training.centerString(COLUMN_DISTENTIAL)
+					+ Training.centerString(COLUMN_PRICE) + Training.centerString("QUANTITE");
 			System.out.println(titles);
 			business.getCart().forEach(
 					a -> System.out.println(a.toString() + Training.centerString(String.valueOf(a.getQuantity()))));
 			if (flag) {
 				System.out.println("MONTANT TOTAL : " + business.getTotal());
-				System.out.println("Souhaitez vous passer commande ? Oui/Non :");
+				System.out.println(TEXT_GREEN + "Souhaitez vous passer commande ? Oui" + TEXT_RESET + "/Non :");
 				if (scan.next().equalsIgnoreCase("Oui")) {
 					nextStep();
 				}
@@ -253,10 +261,10 @@ public class ShopTrainingsApp {
 		int id = scanInt();
 		Category category = business.readOneCategory(id);
 		if (category != null) {
-			System.out.println(category.getName() + ":");
+			System.out.println(TEXT_GREEN + category.getName() + ":");
 			int longueurTexte = category.getDescription().length();
 			for (int i = 0; i < longueurTexte; i++) {
-				System.out.print(category.getDescription().charAt(i));
+				System.out.print(TEXT_GREEN + category.getDescription().charAt(i) + TEXT_RESET);
 				if ((i + 1) % LONGUEUR_LIGNE == 0) {
 					System.out.print("\n");
 				}
@@ -264,7 +272,28 @@ public class ShopTrainingsApp {
 		} else {
 			System.out.println("cette catégorie n'existe pas !");
 		}
+	}
 
+	private static void displayTraining() {
+		System.out.println(Training.centerString(COLUMN_ID) + Training.centerString(COLUMN_NAME)
+				+ Training.centerString(COLUMN_DURATION) + Training.centerString(COLUMN_DISTENTIAL)
+				+ Training.centerString(COLUMN_PRICE));
+		business.readTrainings().forEach(System.out::println);
+		System.out.println("saisissez l'id d'une formation, pour avoir les détails");
+		int id = scanInt();
+		Training training = business.readOneTraining(id);
+		if (training != null) {
+			System.out.println(TEXT_GREEN + training.getTrainingName() + ":");
+			int longueurTexte = training.getDescription().length();
+			for (int i = 0; i < longueurTexte; i++) {
+				System.out.print(TEXT_GREEN + training.getDescription().charAt(i) + TEXT_RESET);
+				if ((i + 1) % LONGUEUR_LIGNE == 0) {
+					System.out.print("\n");
+				}
+			}
+		} else {
+			System.out.println("cette formation n'existe pas !");
+		}
 	}
 
 	private static void displayWeyword() {
@@ -301,6 +330,9 @@ public class ShopTrainingsApp {
 		}
 
 		System.out.println(distentialInfo);
+		System.out.printf("              AFFICHAGE PAR CATEGORIE    %n");
+		System.out.printf("%-15s | %-35s | %-25s | %-15s %n", COLUMN_ID, COLUMN_DESCRIPTION, COLUMN_DURATION,
+				COLUMN_PRICE);
 		business.findTrainingByDistential(present).forEach(a -> System.out.printf("%-15s | %-35s | %-15s | %-15s%n",
 				a.getIdTraining(), a.getTrainingName(), a.getDuration(), a.getPrice()));
 	}

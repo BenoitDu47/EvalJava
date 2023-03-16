@@ -17,7 +17,11 @@ public class Training {
 	private boolean distential;
 	private int quantity = 1;
 
-	public static final int MAX_STRING_LENGTH = 25;
+	public static final int MAX_STRING_LENGTH = 40;
+	public static final String TEXT_RED = "\u001B[31m";
+	public static final String TEXT_MAGENTA = "\u001B[35m";
+	public static final String TEXT_CYAN = "\u001B[36m";
+	public static final String TEXT_RESET = "\u001B[0m";
 
 	/**
 	 * Constructs a new training with the specified information.
@@ -33,12 +37,31 @@ public class Training {
 	 */
 	public Training(int idTraining, String trainingName, String description, double price, int category, int duration,
 			boolean distential, int quantity) {
-		super();
 		this.idTraining = idTraining;
 		this.trainingName = trainingName;
 		this.description = description;
 		this.price = price;
 		this.category = category;
+		this.duration = duration;
+		this.distential = distential;
+	}
+
+	public Training(int idTraining, String trainingName, String description, double price, int duration,
+			boolean distential, int quantity) {
+		this.idTraining = idTraining;
+		this.trainingName = trainingName;
+		this.description = description;
+		this.price = price;
+		this.duration = duration;
+		this.distential = distential;
+	}
+
+	public Training(String trainingName, String description, double price, int duration, boolean distential,
+			int quantity) {
+		this.idTraining = 0;
+		this.trainingName = trainingName;
+		this.description = description;
+		this.price = price;
 		this.duration = duration;
 		this.distential = distential;
 	}
@@ -51,8 +74,11 @@ public class Training {
 		} else {
 			distentialTraining = "Distanciel";
 		}
-		return centerString(String.valueOf(idTraining)) + centerString(String.valueOf(trainingName))
-				+ centerString(String.valueOf(duration)) + centerString(String.valueOf(price) + "€");
+		return centerString(TEXT_RED + String.valueOf(idTraining) + TEXT_RESET)
+				+ centerString(TEXT_MAGENTA + String.valueOf(trainingName) + TEXT_RESET)
+				+ centerString(TEXT_CYAN + String.valueOf(duration) + TEXT_RESET)
+				+ centerString(TEXT_MAGENTA + String.valueOf(distentialTraining) + TEXT_RESET)
+				+ centerString(TEXT_RED + String.valueOf(price) + "€" + TEXT_RESET);
 	}
 
 	public static String centerString(String str) {

@@ -25,6 +25,10 @@ public class BddConnection {
 
 	private static final Logger logger = Logger.getLogger(BddConnection.class.getName());
 
+	/**
+	 * Creates a new database connection with the specified database configuration
+	 * information.
+	 */
 	private BddConnection() {
 		try {
 			getConfigFile();

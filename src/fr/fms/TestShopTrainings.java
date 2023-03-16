@@ -39,16 +39,20 @@ public class TestShopTrainings extends Thread {
 		TestShopTrainings t1 = new TestShopTrainings(" 1-");
 		TestShopTrainings t2 = new TestShopTrainings(" 2-");
 		TestShopTrainings t3 = new TestShopTrainings(" 3-");
-		TestShopTrainings t4 = new TestShopTrainings(" 4-");
-		TestShopTrainings t5 = new TestShopTrainings(" 5-");
 
 		t1.start();
 		t2.start();
 		t3.start();
-		t4.start();
-		t5.start();
+
 	}
 
+	/**
+	 * Une méthode qui teste la fonctionnalité des classes UserDao et TrainingDao en
+	 * invitant l'utilisateur à saisir son identifiant et son mot de passe, puis
+	 * tentez de trouver un utilisateur avec ces informations d'identification. Si
+	 * l'utilisateur est trouvé, la méthode imprime tous les objets Training de la
+	 * base de données, sinon il affiche "accès refusé !".
+	 */
 	private static void testUserTraining() {
 		Scanner scan = new Scanner(System.in);
 		UserDao userDao = new UserDao();
@@ -67,6 +71,12 @@ public class TestShopTrainings extends Thread {
 		scan.close();
 	}
 
+	/**
+	 * Une méthode qui teste la fonctionnalité de la classe DaoFactory en créant et
+	 * en utilisant des instances des classes UserDao et TrainingDao. La méthode
+	 * imprime la durée de tous les entraînements d'une durée supérieure ou égale à
+	 * 4, puis imprime tous les utilisateurs.
+	 */
 	private static void testDaoFactory() {
 		Dao<User> userDao = DaoFactory.getUserDao();
 		System.out.println("Temps de formation supérieure a un moi.");
